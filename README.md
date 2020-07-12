@@ -62,6 +62,59 @@ Now consider the `[redacted]` field in `entropy.conf`, they can be accessed
 via `i@zenithal.me` or `t.me/ZenithalH`, or you can hack into the database
 to obtain them.
 
+## Daemon on startup
+
+First of all, check that in `/etc/pmacct/entropy.conf`, `daemonize` is set 
+to be `true`!
+
+### openrc
+
+For `openrc` users, espcially those with debian, first we need to disable
+the default daemon when installing `pmacct` by
+
+```
+rc-update del pmacctd default
+rc-update del uacctd default
+rc-update del nfacctd default
+rc-update del sfacctd default
+```
+
+Then you should move `etc.init.d.pmacctd.entropy` to 
+`/etc/init.d/pmacctd.entropy` and move `etc.default.pmacctd.entropy` to
+`/etc/default/pmacctd.entropy`. Remember to check that 
+`/etc/init.d/pmacctd.entropy` is eXecutable, namely `+x`.
+
+Then by the following commands to start the
+daemon (proper changes to the configuration file needed!)
+
+```
+rc-update add pmacctd.entropy default
+rc-service pmacctd.entropy start
+```
+
+We use the following command to disable the service
+
+```
+rc-update del pmacctd.entropy default
+```
+
+### systemd
+
+First move `lib.systemd.system.pmacctd.entropy.service` to 
+`/lib/systemd/system/pmacctd.entropy.service`, then move 
+`etc.default.pmacctd.entropy` to `/etc/default/pmacctd.entropy`. We use the
+following command to enable and start the service
+
+```
+systemctl enable --now pmacctd.entropy.service
+```
+
+Use the following command to disable the service
+
+```
+systemctl disable --now pmacctd.entropy.service
+```
+
 ## Comment on entropy.interfaces.map
 
 In fact other interfaces like `divi`, `ivi` or `any` can also be added in this
