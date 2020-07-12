@@ -23,6 +23,22 @@ AUR, hence we recommend
 $ [AUR helper] -S pmacct
 ```
 
+For arch linux arm users, we can build the package from the PKGBUILD obtained
+from x86_64 machines with proper changes and manual dependency check, and
+`pmacct` can run smoothly.
+
+For CentOS users, the commands are
+
+```
+yum install libpcap libpcap-devel mariadb-libs mariadb-devel
+git clone https://github.com/pmacct/pmacct
+cd pmacct
+./autogen.sh
+./configure --enable-mysql
+make
+sudo make install
+```
+
 ## Proper placement of the files
 
 The file `entropy.conf`, `entropy.network.lst` and  `entropy.pretag.map`
