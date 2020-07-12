@@ -115,7 +115,7 @@ Use the following command to disable the service
 systemctl disable --now pmacctd.entropy.service
 ```
 
-## Comment on entropy.interfaces.map
+## Comment on entropy.interfaces.map (disabled now)
 
 In fact other interfaces like `divi`, `ivi` or `any` can also be added in this
 file, and an `ifindex` can be given to them, which could be a key in the final
