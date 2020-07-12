@@ -41,9 +41,9 @@ sudo make install
 
 ## Proper placement of the files
 
-The file `entropy.conf`, `entropy.network.lst` and  `entropy.pretag.map`
-should be placed in `/etc/pmacct/` since we have fixed the path to them in
-`entropy.conf`.
+The file `entropy.conf`, `entropy.network.lst`, `entropy.pretag.map` and
+`entropy.interfaces.map` should be placed in `/etc/pmacct/` since we have
+ fixed the path to them in `entropy.conf`.
 
 ## Necessary changes in the files
 
@@ -61,6 +61,12 @@ set_tag = YYYY
 Now consider the `[redacted]` field in `entropy.conf`, they can be accessed
 via `i@zenithal.me` or `t.me/ZenithalH`, or you can hack into the database
 to obtain them.
+
+## Comment on entropy.interfaces.map
+
+In fact other interfaces like `divi`, `ivi` or `any` can also be added in this
+file, and an `ifindex` can be given to them, which could be a key in the final
+statistics. However, this is only considered for gravity now.
 
 ## Comment on entropy.network.lst
 
