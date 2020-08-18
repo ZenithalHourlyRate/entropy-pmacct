@@ -1,0 +1,8 @@
+version: '3'
+services:
+  entropy-pmacct:
+    image: # To be filled
+    network_mode: host
+    volumes:
+      - ./conf:/etc/pmacct:ro
+    restart: always
